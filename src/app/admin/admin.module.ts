@@ -1,3 +1,4 @@
+import { LoginModule } from './login/login.module';
 import { LayoutsModule } from './layouts/layouts.module';
 import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
@@ -10,11 +11,13 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     HomeModule,
-    LayoutsModule
+    LayoutsModule,
+    LoginModule
   ],
   exports: [
     HomeModule,
-    LayoutsModule
+    LayoutsModule,
+    LoginModule
   ]
 })
 export class AdminModule { }
