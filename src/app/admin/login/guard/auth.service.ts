@@ -45,12 +45,13 @@ export class AuthService {
 
     });
   }
-
+ logout() {
+    localStorage.removeItem("token");
+    this.router.navigate(["/admin-login"]);
+    this.toastr.success("Çıkış Yapıldı");
+  }
 
 }
-
-
-
 
 
 

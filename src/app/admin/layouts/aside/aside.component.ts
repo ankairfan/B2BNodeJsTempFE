@@ -1,3 +1,4 @@
+import { AdminDecodeService } from './../../../services/admin-decode.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideComponent implements OnInit {
 
-  constructor() { }
+  userName: string = "";
+
+  constructor(private adminDecodeService:AdminDecodeService) { }
 
   ngOnInit(): void {
+   this.userName = this.adminDecodeService.getUserName();
   }
 
 }
