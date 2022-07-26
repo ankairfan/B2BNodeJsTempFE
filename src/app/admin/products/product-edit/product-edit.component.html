@@ -1,0 +1,157 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Ürünler</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
+            <li class="breadcrumb-item active">Ürün Girişi/Düzenlemesi</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Ürün Ekle/Güncelle</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Ürün Ekle/Güncelle</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form #myForm="ngForm" class="form-container" (ngSubmit)="onSubmit()" [formGroup]="productForm">
+            <div class="card-body">
+
+              <div class="form-group">
+                <label for="exampleInput1">Ürün Kodu</label>
+                <input type="text" class="form-control" id="exampleInput1" ngModel formControlName="code"
+                  placeholder="Ürün kodu giriniz">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInput2">Ürün Adı</label>
+                <input type="text" class="form-control" id="exampleInput2" ngModel formControlName="name"
+                  placeholder="Ürün adı giriniz">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInput3">Fiyat</label>
+                <input type="number" class="form-control" id="exampleInput3" ngModel formControlName="price"
+                  placeholder="Fiyat giriniz">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInput4">Açıklama</label>
+                <input type="text" class="form-control" id="exampleInput4" ngModel formControlName="description"
+                  placeholder="Açıklama giriniz">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInput5">Kdv Oranı</label>
+                <input type="number" class="form-control" id="exampleInput5" ngModel formControlName="taxRate"
+                  placeholder="Kdv oranı giriniz">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInput6">stok Miktarı</label>
+                <input type="number" class="form-control" id="exampleInput6" ngModel formControlName="enteringProduct"
+                  placeholder="stok giriniz">
+              </div>
+
+              <div class="form-group">
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Kategori seç" formControlName="categoryBy"
+                    [matAutocomplete]="auto" />
+                  <mat-error *ngIf="category.invalid&& myForm.submitted">
+                    <div *ngIf="category.hasError('required')">
+                      bu alan boş geçilemez
+                    </div>
+                  </mat-error>
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCategoryName">
+                    <mat-option *ngFor="let item of categories" [value]="item">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field>
+                  <input matInput type="text" placeholder="Birim seç" formControlName="unitBy"
+                    [matAutocomplete]="birim" />
+                  <mat-error *ngIf="unit.invalid && myForm.submitted">
+                    <div *ngIf="unit.hasError('required')">
+                      bu alan boş geçilemez
+                    </div>
+                  </mat-error>
+                  <mat-autocomplete #birim="matAutocomplete" [displayWith]="displayUnitName">
+                    <mat-option *ngFor="let item of units" [value]="item">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </div>
+
+
+              <div class="form-group">
+                  <div>
+                    <input formControlName="pictureFile" type="file" (change)="upload($event)" />
+
+                    <div *ngIf="pictureFile.invalid && myForm.submitted">
+                      <span *ngIf="pictureFile.hasError('required')">
+                        lütfen bir resim seçiniz
+                      </span>
+                    </div>
+                  </div>
+
+              </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+          </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+    <!-- /.content-wrapper -->

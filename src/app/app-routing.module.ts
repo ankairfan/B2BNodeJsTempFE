@@ -1,3 +1,4 @@
+import { ProductEditComponent } from './admin/products/product-edit/product-edit.component';
 import { LoginComponent } from './admin/login/login.component';
 import { HomeComponent } from './admin/home/home.component';
 import { NgModule } from '@angular/core';
@@ -26,7 +27,12 @@ const routes: Routes = [
         path: 'products',
         component: ProductsComponent,
         loadChildren: () => import('./admin/products/products.module').then(m => m.ProductsModule)
-      }
+      },
+      {
+        path: 'product',
+        component: ProductEditComponent,
+        loadChildren: () => import('./admin/products/products.module').then(m => m.ProductsModule)
+      },
 
     ]
   }

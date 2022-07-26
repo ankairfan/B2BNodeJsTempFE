@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { ErrorService } from './../../services/error.service';
 import { ProductService } from './service/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,10 +13,20 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private productService: ProductService, private errorService: ErrorService) { }
+  filterText: string = "";
+
+  constructor(
+    private productService: ProductService,
+    private errorService: ErrorService,
+    private toastrService:ToastrService,
+    ) { }
+
+
 
   ngOnInit(): void {
+
     this.getProducts();
+
   }
   getProducts() {
     this.productService.getProducts().subscribe(
@@ -24,6 +35,27 @@ export class ProductsComponent implements OnInit {
       },(error) => {
         this.errorService.errorHandler(error);
       });
-
   }
+
+deleteProduct(productId: string) {
+  this.productService.deleteProduct(productId).subscribe(
+    (result: Product) => {
+      this.products = this.products.filter(p => p._id !== productId);
+      this.toastrService.success('Ürün Başarıyla silindi!.', 'Başarılı');
+      this.getProducts
+    },(error) => {
+      this.errorService.errorHandler(error);
+    }
+  );
 }
+
+
+
+
+}
+
+
+
+
+
+

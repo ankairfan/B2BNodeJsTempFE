@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(
       {
-        timeOut: 1000,
+        timeOut: 3000,
         positionClass: 'toast-top-right',
         closeButton: true,
         progressBar: true
@@ -25,7 +25,10 @@ import { AppComponent } from './app.component';
     ),
     AppRoutingModule,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+
+
+
 
 
   ],

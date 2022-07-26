@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Blank Page</h1>
+          <h1>Ürünler</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -34,6 +34,22 @@
           </button>
         </div>
       </div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <button class="btn btn-primary" routerLink="/admin/product">Ürün Ekle</button>
+            <!-- <button class="btn btn-info mx-2" (click)="exportExcel()">Excel'e Aktar</button> -->
+          </div>
+          <div class="col-md-6">
+            <div class="form-group offset-6">
+              <input class="form-control" type="search" [(ngModel)]="filterText" [ngModelOptions]="{standalone: true}"
+                placeholder="Aranacak kelime" aria-label="Aranacak kelime">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="card-body">
         <table class="table table-hover">
           <thead>
@@ -49,7 +65,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let product of products let index=index">
+            <tr *ngFor="let product of products
+             | productPipe: filterText
+              let index=index">
               <td>{{index+1}}</td>
               <td><img [src]="product.picture"></td>
               <td>{{product.name}}</td>
@@ -58,11 +76,14 @@
               <td>{{product.categoryBy.name}}</td>
               <td>{{product.enteringProduct}}</td>
               <td>
-                <button class="btn btn-primary btn-sm" >Düzenle</button>
-                <button class="btn btn-danger btn-sm" >Sil</button>
+                <!-- <button class="btn btn-primary btn-sm">Düzenle</button> -->
+                <button class="btn btn-danger btn-sm" [swal]="deleteSwal"
+                  (confirm)="deleteProduct(product._id)">Sil</button>
               </td>
+
             </tr>
           </tbody>
+
         </table>
       </div>
 
@@ -72,5 +93,9 @@
   </section>
   <!-- /.content -->
 </div>
+
+
+
 <!-- /.content-wrapper -->
-<swal #deleteSwal title="Silinecek?!" text="Ürün silinecek!." type="question" [showCancelButton]="true" [focusCancel]="true" [swalOptions]="{confirmButtonText:'Sil' , cancelButtonText:'Vazgeç'}"></swal>
+<swal #deleteSwal title="Silinecek?!" text="Ürün silinecek!." type="question" [showCancelButton]="true"
+  [focusCancel]="true" [swalOptions]="{confirmButtonText:'Sil' , cancelButtonText:'Vazgeç'}"></swal>

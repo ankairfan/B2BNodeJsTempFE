@@ -5,8 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ProductPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: any[], filterText: string): any[] {
+    if (filterText == "" || filterText == null) {
+      return value;
+    }
+
+    return value.filter(p=> {
+      const name = p.name.toLowerCase().includes(filterText.toLowerCase())
+      return (name)
+    });
   }
+
 
 }

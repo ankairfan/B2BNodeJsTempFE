@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UnitsComponent } from './units.component';
 import { RouterModule, Routes } from '@angular/router';
+import { UnitPipe } from './pipe/unit.pipe';
 
 const routes: Routes = [
   { path: '', component: UnitsComponent }
@@ -9,7 +10,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    UnitsComponent
+    UnitsComponent,
+    UnitPipe
   ],
   imports: [
     CommonModule,
