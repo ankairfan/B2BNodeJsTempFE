@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private errorService: ErrorService,
-    private toastrService:ToastrService,
+    private toastrService:ToastrService
     ) { }
 
 

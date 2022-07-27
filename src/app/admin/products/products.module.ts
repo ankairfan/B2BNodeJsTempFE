@@ -40,3 +40,4 @@ const routes = [
   ]
 })
 export class ProductsModule { }
+

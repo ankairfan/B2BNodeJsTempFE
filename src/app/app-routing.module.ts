@@ -1,3 +1,5 @@
+import { CategoriesComponent } from './admin/categories/categories.component';
+import { CategoryListComponent } from './admin/categories/category-list/category-list.component';
 import { ProductEditComponent } from './admin/products/product-edit/product-edit.component';
 import { LoginComponent } from './admin/login/login.component';
 import { HomeComponent } from './admin/home/home.component';
@@ -36,6 +38,21 @@ const routes: Routes = [
       {
         path: 'product/:id',
         component: ProductEditComponent
+      },
+      {
+        path: 'categories',
+        component: CategoryListComponent,
+        loadChildren: () => import('./admin/categories/categories.module').then(m => m.CategoriesModule)
+      },
+      {
+        path: 'category',
+        component: CategoriesComponent,
+        loadChildren: () => import('./admin/categories/categories.module').then(m => m.CategoriesModule)
+      },
+      {
+        path: 'category/:id',
+        component: CategoriesComponent,
+        loadChildren: () => import('./admin/categories/categories.module').then(m => m.CategoriesModule)
       }
 
     ]
