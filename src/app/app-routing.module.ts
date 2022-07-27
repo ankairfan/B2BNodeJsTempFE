@@ -33,6 +33,10 @@ const routes: Routes = [
         component: ProductEditComponent,
         loadChildren: () => import('./admin/products/products.module').then(m => m.ProductsModule)
       },
+      {
+        path: 'product/:id',
+        component: ProductEditComponent
+      }
 
     ]
   }

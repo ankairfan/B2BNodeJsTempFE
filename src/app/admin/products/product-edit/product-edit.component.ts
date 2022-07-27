@@ -25,6 +25,7 @@ export class ProductEditComponent implements OnInit {
   productForm: FormGroup;
   units: Unit[];
   productId: string;
+  type: string;
 
   constructor
     (
@@ -80,6 +81,10 @@ export class ProductEditComponent implements OnInit {
     });
 
     this.productId = this.route.snapshot.paramMap.get("id");
+    if (this.productId == null) {
+      this.type = "add";
+    } else {
+      this.type = "edit";
     this.productService.getProductById(this.productId).subscribe(result => {
       this.product = result;
       this.productForm.controls['code'].setValue(this.product.code);
@@ -93,6 +98,7 @@ export class ProductEditComponent implements OnInit {
       this.productForm.controls['picture'].setValue(this.product.picture);
     });
 
+  }
   }
 
   displayCategoryName(category: any) {
@@ -110,7 +116,7 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.productForm.valid) {
-
+      if (this.type == "add") {
       this.productService
         .saveProductImage(this.formData)
         .pipe(
@@ -124,15 +130,15 @@ export class ProductEditComponent implements OnInit {
         });
     }
 
-
     else {
   if (this.formData == null) {
     this.productService
       .updateProduct(this.productId, this.productForm.value)
       .subscribe(result => {
-        this.router.navigateByUrl("/admin");
+        this.router.navigateByUrl("/admin/products");
       });
-  } else {
+  }
+  else {
     this.productService
       .saveProductImage(this.formData)
       .pipe(
@@ -152,4 +158,5 @@ export class ProductEditComponent implements OnInit {
   }
 
 
+}
 

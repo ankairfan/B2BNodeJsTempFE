@@ -61,6 +61,7 @@
               <th>Fiyatı</th>
               <th>Kategori</th>
               <th>Stok</th>
+              <th>Açıklama</th>
               <th>İşlemler</th>
             </tr>
           </thead>
@@ -75,8 +76,9 @@
               <td>{{product.price}}</td>
               <td>{{product.categoryBy.name}}</td>
               <td>{{product.enteringProduct}}</td>
+              <td>{{product.description}}</td>
               <td>
-                <!-- <button class="btn btn-primary btn-sm">Düzenle</button> -->
+                <button class="btn btn-primary btn-sm" routerLink="/admin/product/{{product._id}}">Düzenle</button>
                 <button class="btn btn-danger btn-sm" [swal]="deleteSwal"
                   (confirm)="deleteProduct(product._id)">Sil</button>
               </td>
