@@ -102,15 +102,15 @@
               <div class="form-group">
                 <mat-form-field>
                   <input matInput type="text" placeholder="Birim seç" formControlName="unitBy"
-                    [matAutocomplete]="birim" />
+                    [matAutocomplete]="birim"/>
                   <mat-error *ngIf="unit.invalid && myForm.submitted">
                     <div *ngIf="unit.hasError('required')">
                       bu alan boş geçilemez
                     </div>
                   </mat-error>
                   <mat-autocomplete #birim="matAutocomplete" [displayWith]="displayUnitName">
-                    <mat-option *ngFor="let item of units" [value]="item">
-                      {{ item.name }}
+                    <mat-option *ngFor="let unit of units" [value]="unit">
+                      {{ unit.name }}
                     </mat-option>
                   </mat-autocomplete>
                 </mat-form-field>

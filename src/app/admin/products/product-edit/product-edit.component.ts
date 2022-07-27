@@ -18,7 +18,7 @@ import { ProductService } from '../service/product.service';
 })
 export class ProductEditComponent implements OnInit {
 
-  products: Product[] = [];
+
   product: Product = new Product();
   categories: Category[];
   formData: FormData = null;
@@ -85,21 +85,26 @@ export class ProductEditComponent implements OnInit {
       this.type = "add";
     } else {
       this.type = "edit";
-    this.productService.getProductById(this.productId).subscribe(result => {
-      this.product = result;
-      this.productForm.controls['code'].setValue(this.product.code);
-      this.productForm.controls['name'].setValue(this.product.name);
-      this.productForm.controls['price'].setValue(this.product.price);
-      this.productForm.controls['enteringProduct'].setValue(this.product.enteringProduct);
-      this.productForm.controls['taxRate'].setValue(this.product.taxRate);
-      this.productForm.controls['description'].setValue(this.product.description);
-      this.productForm.controls['categoryBy'].setValue(this.product.categoryBy);
-      this.productForm.controls['unitBy'].setValue(this.product.unitBy);
-      this.productForm.controls['picture'].setValue(this.product.picture);
-    });
 
+      this.productService.getProductById(this.productId).subscribe(result => {
+        this.product = result;
+
+        this.productForm.controls['code'].setValue(this.product.code);
+        this.productForm.controls['name'].setValue(this.product.name);
+        this.productForm.controls['price'].setValue(this.product.price);
+        this.productForm.controls['enteringProduct'].setValue(this.product.enteringProduct);
+        this.productForm.controls['taxRate'].setValue(this.product.taxRate);
+        this.productForm.controls['description'].setValue(this.product.description);
+        this.productForm.controls['picture'].setValue(this.product.picture);
+        this.productForm.controls['categoryBy'].setValue(this.product.categoryBy);
+        this.productForm.controls['unitBy'].setValue(this.product.unitBy);
+
+
+      });
+
+    }
   }
-  }
+
 
   displayCategoryName(category: any) {
     if (category) {
@@ -117,46 +122,53 @@ export class ProductEditComponent implements OnInit {
   onSubmit(): void {
     if (this.productForm.valid) {
       if (this.type == "add") {
-      this.productService
-        .saveProductImage(this.formData)
-        .pipe(
-          map(result => {
-            this.productForm.controls['picture'].setValue(result.url);
-          }),
-          mergeMap(() => this.productService.addProduct(this.productForm.value))
-        )
-        .subscribe(result => {
-          this.router.navigateByUrl("/admin/products");
-        });
-    }
+        this.productService
+          .saveProductImage(this.formData)
+          .pipe(
+            map(result => {
+              this.productForm.controls['picture'].setValue(result.url);
+            }),
+            mergeMap(() => this.productService.addProduct(this.productForm.value))
+          )
+          .subscribe(result => {
+            this.router.navigateByUrl("/admin/products");
+          });
+      }
 
-    else {
-  if (this.formData == null) {
-    this.productService
-      .updateProduct(this.productId, this.productForm.value)
-      .subscribe(result => {
-        this.router.navigateByUrl("/admin/products");
-      });
-  }
-  else {
-    this.productService
-      .saveProductImage(this.formData)
-      .pipe(
-        map(result => {
-          this.productForm.controls['picture'].setValue(result.url);
-        }),
-        mergeMap(() =>
-          this.productService.updateProduct(this.productId, this.productForm.value)
-        )
-      )
-      .subscribe(result => {
-        this.router.navigateByUrl("/admin/products");
-      });
+      else {
+        if (this.formData == null) {
+          this.productService
+            .updateProduct(this.productId, this.productForm.value)
+            .subscribe(result => {
+              this.router.navigateByUrl("/admin/products");
+            });
+        }
+        else {
+          this.productService
+            .saveProductImage(this.formData)
+            .pipe(
+              map(result => {
+                this.productForm.controls['picture'].setValue(result.url);
+              }),
+              mergeMap(() =>
+                this.productService.updateProduct(this.productId, this.productForm.value)
+              )
+            )
+            .subscribe(result => {
+              this.router.navigateByUrl("/admin/products");
+            });
+        }
+      }
+
+
+
+    }
   }
 }
-    }
-  }
 
 
-}
+
+
+
+
 
