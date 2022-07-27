@@ -38,7 +38,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-6">
-            <button class="btn btn-primary" routerLink="/admin/category">Kategori Ekle</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" routerLink="/admin/category">Kategori Ekle</button>
             <!-- <button class="btn btn-info mx-2" (click)="exportExcel()">Excel'e Aktar</button> -->
           </div>
           <div class="col-md-6">
@@ -66,7 +66,8 @@
               <td>{{index+1}}</td>
               <td>{{category.name}}</td>
               <td>
-                <button class="btn btn-primary btn-sm" routerLink="/admin/category/{{category._id}}">Düzenle</button>
+                <button class="btn btn-primary btn-sm" routerLink="/admin/category/{{category._id}}">Kategori Güncelle</button>
+
                 <button class="btn btn-danger btn-sm" [swal]="deleteSwal"
                   (confirm)="deleteCategory(category._id)">Sil</button>
               </td>
@@ -83,6 +84,12 @@
   </section>
   <!-- /.content -->
 </div>
+
+
+
+
+
+
 
 
 

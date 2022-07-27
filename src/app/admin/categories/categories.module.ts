@@ -1,7 +1,6 @@
 import { CategoryListComponent } from './category-list/category-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoriesComponent } from './categories.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -10,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CategoryPipePipe } from './pipe/category-pipe.pipe';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 
 const routes: Routes = [
@@ -19,8 +19,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     CategoryListComponent,
-    CategoriesComponent,
     CategoryPipePipe,
+    CategoryEditComponent,
 
   ],
   imports: [
@@ -35,8 +35,8 @@ const routes: Routes = [
     MatButtonModule
   ],
   exports: [
-    CategoriesComponent,
     CategoryListComponent,
+    CategoryEditComponent
 
   ]
 

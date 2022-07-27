@@ -12,17 +12,24 @@ import { ToastrService } from 'ngx-toastr';
 export class CategoryListComponent implements OnInit {
 
   categories: Category[] = [];
+  categoryId: string;
+  category: Category=new Category();
 
   filterText: string = "";
 
   constructor(
     private categoryService: CategoryService,
     private errorService: ErrorService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    ) { }
 
   ngOnInit(): void {
     this.getCategories();
+
+
   }
+
+
   getCategories() {
     this.categoryService.getCategories().subscribe(
       (result: Category[]) => {
@@ -44,5 +51,14 @@ export class CategoryListComponent implements OnInit {
     );
   }
 
+
+
+
+
+
 }
+
+
+
+
 

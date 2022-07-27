@@ -1,4 +1,3 @@
-import { CategoriesComponent } from './admin/categories/categories.component';
 import { CategoryListComponent } from './admin/categories/category-list/category-list.component';
 import { ProductEditComponent } from './admin/products/product-edit/product-edit.component';
 import { LoginComponent } from './admin/login/login.component';
@@ -8,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutsComponent } from './admin/layouts/layouts.component';
 import { AuthGuard } from './admin/login/guard/auth.guard';
 import { ProductsComponent } from './admin/products/products.component';
+import { CategoryEditComponent } from './admin/categories/category-edit/category-edit.component';
 
 const routes: Routes = [
   {
@@ -46,14 +46,15 @@ const routes: Routes = [
       },
       {
         path: 'category',
-        component: CategoriesComponent,
+        component: CategoryEditComponent,
         loadChildren: () => import('./admin/categories/categories.module').then(m => m.CategoriesModule)
       },
       {
         path: 'category/:id',
-        component: CategoriesComponent,
+        component: CategoryEditComponent,
         loadChildren: () => import('./admin/categories/categories.module').then(m => m.CategoriesModule)
       }
+
 
     ]
   }
