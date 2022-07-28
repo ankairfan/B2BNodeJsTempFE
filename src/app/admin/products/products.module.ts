@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import { RouterModule } from '@angular/router';
-import { ProductPipe } from './pipe/product.pipe';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { ProductPipePipe } from './pipe/product-pipe.pipe';
 
 
 
@@ -20,8 +20,8 @@ const routes = [
 @NgModule({
   declarations: [
     ProductsComponent,
-    ProductPipe,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductPipePipe
   ],
   imports: [
     CommonModule,

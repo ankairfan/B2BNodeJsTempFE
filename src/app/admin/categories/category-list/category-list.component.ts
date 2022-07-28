@@ -12,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 export class CategoryListComponent implements OnInit {
 
   categories: Category[] = [];
-  categoryId: string;
   category: Category=new Category();
 
   filterText: string = "";

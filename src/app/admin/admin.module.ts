@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -31,7 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginModule,
     ProductsModule,
     CategoriesModule,
-    UnitsModule,
     MatToolbarModule,
     MatButtonModule,
     MatTabsModule,
@@ -43,7 +42,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatAutocompleteModule,
     MatCardModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UnitsModule
 
 
   ],
@@ -53,7 +53,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginModule,
     ProductsModule,
     CategoriesModule,
-    UnitsModule,
     MatToolbarModule,
     MatButtonModule,
     MatTabsModule,
@@ -65,7 +64,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatAutocompleteModule,
     MatCardModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UnitsModule
 
   ]
 })

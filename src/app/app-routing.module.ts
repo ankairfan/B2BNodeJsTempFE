@@ -8,6 +8,8 @@ import { LayoutsComponent } from './admin/layouts/layouts.component';
 import { AuthGuard } from './admin/login/guard/auth.guard';
 import { ProductsComponent } from './admin/products/products.component';
 import { CategoryEditComponent } from './admin/categories/category-edit/category-edit.component';
+import { UnitsComponent } from './admin/units/units.component';
+import { UnitEditComponent } from './admin/units/unit-edit/unit-edit.component';
 
 const routes: Routes = [
   {
@@ -53,6 +55,21 @@ const routes: Routes = [
         path: 'category/:id',
         component: CategoryEditComponent,
         loadChildren: () => import('./admin/categories/categories.module').then(m => m.CategoriesModule)
+      },
+      {
+        path: 'units',
+        component: UnitsComponent,
+        loadChildren: () => import('./admin/units/units.module').then(m => m.UnitsModule)
+      },
+      {
+        path: 'unit',
+        component: UnitEditComponent,
+        loadChildren: () => import('./admin/units/units.module').then(m => m.UnitsModule)
+      },
+      {
+        path: 'unit/:id',
+        component: UnitEditComponent,
+        loadChildren: () => import('./admin/units/units.module').then(m => m.UnitsModule)
       }
 
 
