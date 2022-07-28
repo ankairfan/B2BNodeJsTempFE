@@ -6,8 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ErrorService } from 'src/app/services/error.service';
-import { map } from 'rxjs';
-import { AnonymousSubject } from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +31,11 @@ export class AuthService {
 
   login(adminLoginModel: Login) {
     let api = this.baseUrl + "login";
-    this.httpClient.post(api, adminLoginModel).subscribe((res:any) => {
+    this.httpClient.post(api, adminLoginModel).subscribe((res: any) => {
       if (res.token) {
         localStorage.setItem("token", res.token);
         this.router.navigate(["/admin"]);
-        this.toastr.success("Login Girişi Başarılı");
+        this.toastr.success("Giriş Başarılı");
 
       } else {
         this.toastr.error("Kullanıcı Adı veya Şifre Hatalı");
@@ -45,7 +43,7 @@ export class AuthService {
 
     });
   }
- logout() {
+  logout() {
     localStorage.removeItem("token");
     this.router.navigate(["/admin-login"]);
     this.toastr.success("Çıkış Yapıldı");

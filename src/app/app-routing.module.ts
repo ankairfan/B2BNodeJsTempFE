@@ -72,7 +72,6 @@ const routes: Routes = [
         loadChildren: () => import('./admin/units/units.module').then(m => m.UnitsModule)
       }
 
-
     ]
   }
 ];

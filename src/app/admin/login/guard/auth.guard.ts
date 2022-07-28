@@ -17,7 +17,7 @@ constructor
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      let isAuthanticated = this.authService.isAuthanticated();
+    let isAuthanticated = this.authService.isAuthanticated();
       if(isAuthanticated) {
         return true;
       }
@@ -36,4 +36,5 @@ constructor
   }
 
 }
+
 

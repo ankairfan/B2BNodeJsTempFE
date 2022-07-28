@@ -1,10 +1,11 @@
 export class User {
-  _id: string;
+  _id?: string;
   email: string;
   password: string;
   nameSurname: string;
   status:boolean;
   role:string;
-  created_at: Date;
+  created_at?: Date;
 }
+
 
